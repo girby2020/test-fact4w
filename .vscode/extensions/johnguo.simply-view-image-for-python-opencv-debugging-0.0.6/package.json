@@ -1,0 +1,79 @@
+{
+	"name": "simply-view-image-for-python-opencv-debugging",
+	"displayName": "simply_view_image_for_python_opencv_debugging",
+	"description": "simply view the image of the image variables when debugging python with opencv",
+	"version": "0.0.6",
+	"publisher": "johnguo",
+	"engines": {
+		"vscode": "^1.44.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/john-guo/simply-view-image-for-python-opencv-debugging"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onDebugResolve:python"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.viewimagepythonopencvdebug",
+				"title": "View Image(Python OpenCV Debug)",
+				"enablement": "inDebugMode"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.viewimagepythonopencvdebug",
+				"key": "ctrl+alt+q",
+				"when": "inDebugMode"
+			}
+		],
+		"configuration": {
+			"title": "View Image(Python OpenCV Debug)",
+			"properties": {
+				"svifpod.usetmppathtosave": {
+					"type": "boolean",
+					"default": true,
+					"description": "Use the system tmp path to save image otherwise use the storage path."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "webpack --mode production",
+		"webpack": "webpack --mode development",
+		"webpack-dev": "webpack --mode development --watch",
+		"test-compile": "tsc -p ./",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"@types/vscode": "^1.44.0",
+		"@typescript-eslint/eslint-plugin": "^2.26.0",
+		"@typescript-eslint/parser": "^2.26.0",
+		"eslint": "^6.8.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.1",
+		"ts-loader": "^7.0.1",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0",
+		"webpack": "^4.43.0",
+		"webpack-cli": "^3.3.11"
+	},
+	"__metadata": {
+		"id": "ef875791-f4a1-41c7-aafc-e6c6454c708d",
+		"publisherId": "198db246-97fd-4b94-8137-a48032203a7c",
+		"publisherDisplayName": "John Guo"
+	}
+}

@@ -1,0 +1,14 @@
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[user]
+	name = <A GIRBY>
+	email = girby.tech@gmail.com
+[merge]
+	conflictstyle = diff3
+[color]
+	ui = auto
+[core]
+	editor = code --wait

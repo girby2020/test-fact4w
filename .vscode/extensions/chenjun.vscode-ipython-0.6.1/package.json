@@ -1,0 +1,86 @@
+{
+	"name": "vscode-ipython",
+	"displayName": "IPython for VSCode(Run in Current directory)",
+	"repository": "https://github.com/wan230114/vscode-ipython-run",
+	"description": "Integration with IPython, including useful keybindings",
+	"version": "0.6.1",
+	"publisher": "ChenJun",
+	"icon": "ipython_icon.png",
+	"engines": {
+		"vscode": "^1.5.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "ipython.sendFileContentsToIPython",
+				"title": "Send File Contents To IPython"
+			},
+			{
+				"command": "ipython.sendSelectedToIPython",
+				"title": "Send Selected Text (or current line) To IPython"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "ipython.sendSelectedToIPython",
+				"key": "ctrl+enter",
+				"mac": "ctrl+enter",
+				"when": "editorTextFocus && !notebookEditorFocused && !python.datascience.hascodecells"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Ipython Configuration",
+			"properties": {
+				"ipython.runInCurrentDirectory": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable/Disable Run in the same directory as the file, during ipython initialization. (Need to restart ipython)"
+				},
+				"ipython.focusActiveEditorGroup": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable/Disable run focus Active EditorGroup."
+				},
+				"ipython.isAutoInputLine": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable/Disable auto get line in doc. use`%load`"
+				},
+				"ipython.isSave": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable/Disable save doc before send to terminal."
+				},
+				"ipython.isMoveCursor": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable/Disable move cursor to the next line after send to terminal."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"typescript": "^2.0.3",
+		"vscode": "^1.0.0",
+		"mocha": "^2.3.3",
+		"eslint": "^3.6.0",
+		"@types/node": "^6.0.40",
+		"@types/mocha": "^2.2.32"
+	},
+	"__metadata": {
+		"id": "3d0375ba-dd87-4ddd-8902-32ee3aa9493f",
+		"publisherId": "11c3608a-058a-4d4e-8643-0df3e838b396",
+		"publisherDisplayName": "ChenJun"
+	}
+}

@@ -1,0 +1,73 @@
+{
+	"name": "vscode-plot",
+	"displayName": "VSCode Plot",
+	"description": "Simple visualizer for numerical sequence",
+	"version": "0.1.1",
+	"publisher": "henoc",
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#FFFFFF",
+		"theme": "light"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Henoc/vscode-plot/issues",
+		"email": "agekutar@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Henoc/vscode-plot"
+	},
+	"categories": [
+		"Other"
+	],
+	"engines": {
+		"vscode": "^0.10.7"
+	},
+	"activationEvents": [
+		"onCommand:vscodePlot.plot"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "vscodePlot.plot",
+				"title": "Open VSCode Plot"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorHasSelection",
+					"command": "vscodePlot.plot",
+					"group": "navigation"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./ && yarn run browserify",
+		"browserify": "browserify out/main.js -o resources/bundle.js",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"@types/ejs": "^2.5.0",
+		"@types/node": "^8.5.2",
+		"tslint": "^5.8.0",
+		"typescript": "^2.6.2",
+		"vscode": "^1.1.10"
+	},
+	"dependencies": {
+		"@types/tinycolor2": "^1.4.0",
+		"chart.js": "^2.7.1",
+		"ejs": "^2.5.7",
+		"tinycolor2": "^1.4.1",
+		"yaparsec": "^2.0.0"
+	},
+	"__metadata": {
+		"id": "1a3d0bd7-2f72-44a7-b696-609f83cd1ed6",
+		"publisherId": "44612310-6687-4f95-9f96-bb7dbc23a3cb",
+		"publisherDisplayName": "henoc"
+	}
+}
